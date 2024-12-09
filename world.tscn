@@ -1,21 +1,90 @@
-[gd_scene load_steps=4 format=3 uid="uid://bni04vtjyx8mx"]
+[gd_scene load_steps=8 format=3 uid="uid://b2wfwf6xdedhm"]
 
-[ext_resource type="Texture2D" uid="uid://caftoi7ysyb0p" path="res://World/Bush.png" id="1_6863h"]
-[ext_resource type="Script" path="res://Player/Player.gd" id="2_1qwjw"]
-[ext_resource type="Texture2D" uid="uid://c3tmbwh0q2yq2" path="res://Player/Player.png" id="2_bnvmg"]
+[ext_resource type="Script" path="res://Player/Player.gd" id="2_l7e33"]
+[ext_resource type="Texture2D" uid="uid://c3tmbwh0q2yq2" path="res://Player/Player.png" id="2_mverc"]
+[ext_resource type="PackedScene" uid="uid://deqxxa3s2ea1b" path="res://World/Bush2.tscn" id="2_wicgq"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_27jfp"]
+
+[sub_resource type="Animation" id="Animation_memeu"]
+resource_name = "RunRight"
+length = 0.6
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [3, 4, 5, 2, 3, 3]
+}
+
+[sub_resource type="Animation" id="Animation_j4aer"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_67xpd"]
+_data = {
+"RESET": SubResource("Animation_j4aer"),
+"RunRight": SubResource("Animation_memeu")
+}
 
 [node name="World" type="Node2D"]
 
-[node name="Bush" type="Sprite2D" parent="."]
-texture_filter = 1
-position = Vector2(40, 54)
-texture = ExtResource("1_6863h")
+[node name="StaticBody2D" parent="." instance=ExtResource("2_wicgq")]
+position = Vector2(96, 159)
 
-[node name="Player" type="CharacterBody2D" parent="."]
-position = Vector2(176, 133)
-script = ExtResource("2_1qwjw")
+[node name="StaticBody2D2" parent="." instance=ExtResource("2_wicgq")]
+position = Vector2(490, 175)
+
+[node name="StaticBody2D3" parent="." instance=ExtResource("2_wicgq")]
+position = Vector2(326, 348)
+
+[node name="StaticBody2D4" parent="." instance=ExtResource("2_wicgq")]
+position = Vector2(693, 308)
+
+[node name="StaticBody2D5" parent="." instance=ExtResource("2_wicgq")]
+position = Vector2(793, 113)
+
+[node name="StaticBody2D6" parent="." instance=ExtResource("2_wicgq")]
+position = Vector2(84, 430)
+
+[node name="StaticBody2D7" parent="." instance=ExtResource("2_wicgq")]
+position = Vector2(225, 124)
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(142, 64)
+script = ExtResource("2_l7e33")
 metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="Player"]
-texture = ExtResource("2_bnvmg")
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+texture_filter = 1
+texture = ExtResource("2_mverc")
 hframes = 60
+frame = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(-1, 7)
+scale = Vector2(1, 0.5)
+shape = SubResource("CapsuleShape2D_27jfp")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterBody2D"]
+libraries = {
+"": SubResource("AnimationLibrary_67xpd")
+}

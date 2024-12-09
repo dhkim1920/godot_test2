@@ -1,14 +1,14 @@
 [gd_scene load_steps=60 format=2]
 
-[ext_resource path="res://Player/Player.png" type="Texture" id=1]
-[ext_resource path="res://Player/Player.gd" type="Script" id=2]
-[ext_resource path="res://Overlap/Hitbox.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Player/SwordHitbox.gd" type="Script" id=4]
-[ext_resource path="res://Overlap/Hurtbox.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Shadows/MediumShadow.png" type="Texture" id=6]
-[ext_resource path="res://Music and Sounds/Swipe.wav" type="AudioStream" id=7]
-[ext_resource path="res://Music and Sounds/Evade.wav" type="AudioStream" id=8]
-[ext_resource path="res://WhiteColor.shader" type="Shader" id=9]
+[ext_resource type="Texture" uid="uid://c3tmbwh0q2yq2" path="res://Player/Player.png" id="1"]
+[ext_resource type="Script" path="res://Player/Player.gd" id="2"]
+[ext_resource type="PackedScene" path="res://Overlap/Hitbox.tscn" id="3"]
+[ext_resource type="Script" path="res://Player/SwordHitbox.gd" id="4"]
+[ext_resource type="PackedScene" path="res://Overlap/Hurtbox.tscn" id="5"]
+[ext_resource type="Texture" uid="uid://bvnfunvbvn6is" path="res://Shadows/MediumShadow.png" id="6"]
+[ext_resource type="AudioStream" uid="uid://b50wcvpyftmoq" path="res://Music and Sounds/Swipe.wav" id="7"]
+[ext_resource type="AudioStream" uid="uid://cxjt6y8xgbyog" path="res://Music and Sounds/Evade.wav" id="8"]
+[ext_resource type="Shader" path="res://WhiteColor.shader" id="9"]
 
 [sub_resource type="ShaderMaterial" id=50]
 shader = ExtResource( 9 )
